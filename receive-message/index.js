@@ -16,7 +16,7 @@ exports.handler = async (event) => {
             output.map(
                 body => sns.publish({
                     Message: `Hola ${JSON.parse(body).name}`,
-                    TopicArn: 'arn:aws:sns:us-east-1:437051718508:pepe'
+                    TopicArn: 'arn:aws:sns:us-east-2:066987178365:prueba-lunes'
                 }).promise()
             )
         );
