@@ -22,12 +22,9 @@ exports.handler = async (event) => {
             };
         }
 
-
-
-
         await sqs.sendMessage({
             MessageBody: JSON.stringify({
-                name: JSON.parse(event.body).name || 'Default Name'
+                name: event.body.name || 'Default Name'
             }),
             QueueUrl: 'https://sqs.us-east-2.amazonaws.com/066987178365/prueba-lunes'
         }).promise();

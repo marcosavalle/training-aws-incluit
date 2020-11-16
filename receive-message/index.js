@@ -9,13 +9,13 @@ exports.handler = async (event) => {
         // Get the records we are handling from this event
         const output = event.Records.map(record => record.body);
 
-        console.log('Received messages: ', output);
+
 
         // Send a notification to SNS for each message
         await Promise.all(
             output.map(
                 body => sns.publish({
-                    Message: `Hola ${JSON.parse(body).name}`,
+                    Message: `Hola ${body.name}`,
                     TopicArn: 'arn:aws:sns:us-east-2:066987178365:prueba-lunes'
                 }).promise()
             )
